@@ -7,7 +7,7 @@ int main(int argc, char const *argv[])
   int buf,cont;
   int resp;
   char c;
-  init(&myStack, 1);
+  init(&myStack, 1); // alterar tamanho do array pela variável numérica, esta associada a malloc;
   do
   {
     printf("Deseja inserir ou remover elementos?(i)/(r):");
