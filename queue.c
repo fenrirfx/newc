@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include "queue.h"
 
-int front = -1, rear = -1;
-
 void start(Queue *fila, int size){
     fila->data = malloc(sizeof(int)*size);
     fila->tail = -1;
