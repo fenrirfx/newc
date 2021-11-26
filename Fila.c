@@ -22,7 +22,7 @@ int main(int argc, char const *argv[]){
             case 1:
                 printf("quantas posiçoes de fila pretende inserir?: ");
                 scanf("%d",&qtd);
-                inicia(&myqueue, qtd);
+                start(&myqueue, qtd);
                 break;
             case 2:
                 printf("Insira o numero: ");
@@ -33,16 +33,16 @@ int main(int argc, char const *argv[]){
                     printf("Lista cheia\n");
                 break;
             case 3:
-                if (remover(&myqueue))
+                if (pull(&myqueue))
                     printf("Número removido\n"); 
                 else
                     printf("lista vazia\n");
                 break;               
             case 4:
-                listar(&myqueue);
+                list(&myqueue);
                 break;
             case 5:
-                limpar(&myqueue);
+                clean(&myqueue);
                 break;
             case 0:
                 exit(0);
@@ -52,6 +52,5 @@ int main(int argc, char const *argv[]){
         }
     }
     while(cont!=0);
-
  return 0;   
 }

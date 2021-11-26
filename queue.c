@@ -3,20 +3,20 @@
 
 int front = -1, rear = -1;
 
-void inicia(Queue *fila, int size){
+void start(Queue *fila, int size){
     fila->data = malloc(sizeof(int)*size);
-    fila->maxelems = 0;
-    fila->nelems = 0;
+    fila->tail = -1;
+    fila->head = -1;
     fila->size = size;
 }
 
 int isfull(Queue * fila){
-    if ((front == rear + 1) || (front == 0 && rear == fila->size - 1)) return 1;
+    if ((fila->head == fila->tail + 1) || (fila->head == 0 && fila->tail == fila->size - 1)) return 1;
     return 0;
 }
 
-int isempty(){
-    if (front == -1) return 1;
+int isempty(Queue *fila){
+    if (fila->head == -1) return 1;
     return 0;
 }
 
@@ -25,43 +25,43 @@ int insert(Queue *fila, int data){
         return 0;
     }
     else{
-        if (front == -1) front = 0;
-        rear = (rear + 1) % fila->size;
-        fila->data[rear] = data;
-        return data;
+        if (fila->head == -1) fila->head = 0;
+        fila->tail = (fila->tail + 1) % fila->size;
+        fila->data[fila->tail] = data;
+        return 1;
     }
 }
 
-int remover(Queue *fila){
+int pull(Queue *fila){
     int element;
-    if (isempty())
+    if (isempty(fila))
         return 0;
     else {
     
-        element = fila->data[front];
-        fila->data[front] = 0;
+        element = fila->data[fila->head];
+        fila->data[fila->head] = 0;
 
-        if (front == rear) {
-            front = -1;
-            rear = -1;
+        if (fila->head == fila->tail) {
+            fila->head = -1;
+            fila->tail = -1;
         } 
         else {
-            front = (front + 1) % fila->size;
+            fila->head = (fila->head + 1) % fila->size;
         }
         return 1;
     } 
 }
 
-void listar(Queue *fila){
+void list(Queue *fila){
     for (int i =0; i<fila->size;i++){
         printf("%d ||",fila->data[i]);
     }
     printf("\n");
 }
-void limpar(Queue *fila){
+void clean(Queue *fila){
     for (int i=0;i<fila->size;i++){
         fila->data[i]=0;
     }
-    fila->maxelems =0;
-    fila->nelems=0;
+    fila->head =0;
+    fila->tail=0;
 }
