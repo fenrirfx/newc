@@ -16,6 +16,7 @@ int main(int argc, char const *argv[]){
     printf("***5 - Limpar ***\n");
     printf("***0 - Sair   ***\n");
     printf("*****************\n");
+    printf("%d %d ", myqueue.head, myqueue.tail);
     printf("Escolha: ");
     scanf("%d",&cont);
         switch(cont){

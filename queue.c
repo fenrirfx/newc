@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "queue.h"
 
+
 void start(Queue *fila, int size){
     fila->data = malloc(sizeof(int)*size);
     fila->tail = -1;
@@ -31,12 +32,9 @@ int insert(Queue *fila, int data){
 }
 
 int pull(Queue *fila){
-    int element;
     if (isempty(fila))
         return 0;
     else {
-    
-        element = fila->data[fila->head];
         fila->data[fila->head] = 0;
 
         if (fila->head == fila->tail) {
@@ -60,6 +58,6 @@ void clean(Queue *fila){
     for (int i=0;i<fila->size;i++){
         fila->data[i]=0;
     }
-    fila->head =0;
-    fila->tail=0;
+    fila->head = -1;
+    fila->tail = -1;
 }
