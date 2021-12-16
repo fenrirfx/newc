@@ -8,21 +8,25 @@ char ** explode(char *separator, char *string, int *explode_size){
 	//copia a string a e aloca espaço para a mesma de acordo com o tamanho
 	char *ptr = strcpy((char*)malloc(strlen(string)),string);
 	int size = sizeof(char*);
+	int sizes = strlen(separator);
 	//cria o ponteiro duplo que sera retornado com uma posição de ponteiro de char
 	char **str = (char**)malloc(size);
 	int i=1,cont=1;
 	//atribui o ponteiro da string copiada à primeira posição criada do ponteiro duplo
 	str[0]= ptr;
-
 	//enquanto a string nao for nula repete
 	while(*ptr){
-		if(*ptr == *separator){ //detecta quando o char do ponteiro é igual ao separator
+		if(*ptr == *separator && *(ptr+(sizes-1)) ==*separator){ //detecta quando o char do ponteiro é igual ao separator
+			for (int j=0;j<sizes;j++){
+				*ptr = 0;
+				ptr++;
+			}
 			str = (char**) realloc(str,(++i)*size); //cria a próxima posição do ponteiro duplo
-			str[i-1] = ptr+1; //atribui à posiçao seguinte a string do ponteiro p+1
-			*ptr = 0; // coloca o o zero na posiçao de p ao invés do separator;
+			str[i-1] = ptr; //atribui à posiçao seguinte a string do ponteiro p+1
 			cont++; // incrementa o cont para depois alocar ao explode_size;
+			ptr--;
 		}
-		ptr++; // incrementa o ptr por char
+		ptr++; // incrementa o ptr por char	
 		tam++; // variável global que conta todos os caracteres da string
 	}
 	
@@ -44,7 +48,7 @@ char * implode(char *separator, char **strings, int nstrings){
 		strcat(tmp,strings[i]);// contatena o string[i] para o temp	
 			if (i<(nstrings-1))// testa se é a ultima posiçao para nao incrementar mais separator
 			strcat(tmp,separator); // senão for adiciona o separator por contatenação ao tmp
-		*ptr = ("%s",tmp); // atribui ao ponteiro a string que foi contatenada
+		*ptr = tmp; // atribui ao ponteiro a string que foi contatenada
 	}
 	return *ptr;
 }
@@ -56,7 +60,7 @@ char *res_implode;
 int res_size;
 int i=0;
 
-	res = explode(",", "Ana,Carlos,Francisco,Hugo,Xavier", &res_size);
+	res = explode(",,,", ",,,,,,,Ana,,,Carlos,,,Francisco,,,Hugo,,,Xavier,,,,,,", &res_size);
 		
 	for(i=0; i<res_size; i++) {
 		printf("|%s|\n", *(res+i));
