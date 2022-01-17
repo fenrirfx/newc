@@ -12,7 +12,7 @@ void swap(int* a, int* b){
 void bubblesort(int *elems, int nelems, int (*compare)(int n1, int n2)){
     int troca=1;
 
-      for(int i=0 ; i<= nelems; i++){
+      for(int i=0 ; i< nelems; i++){
         for(int j=0; j<=i; j++)
         {
             if(compare(elems[i],elems[j]))
