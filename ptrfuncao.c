@@ -22,11 +22,7 @@ void bubblesort(int *elems, int nelems, int (*compare)(int n1, int n2)){
 }
 
 int compare(int n1, int n2){
-
-    if (n1<n2)
-        return 1;
-    else
-        return 0;
+    return (n1>n2);
 }
 
 int main(int argc,  char *argv[]){
