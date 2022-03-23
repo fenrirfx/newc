@@ -100,6 +100,7 @@ class cc:code{
                 if (temp[i]>10)
                     temp[i] = temp[i]-9;
             }
+            result +=temp[i];
         }
         if (result%10 == 0)
             return true;
