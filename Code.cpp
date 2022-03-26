@@ -120,7 +120,7 @@ int main(){
     //cout<<novonif.checkNif("123456789");
     cout<<novonif.checkNif("238933128")<<endl;
     cout<<novonif.GetCode()<<endl;
-    cout<<novocode.checkCC("122393496ZX0")<<endl;
+    //cout<<novocode.checkCC("122393496ZX0")<<endl;
 
     return 0;
 }
