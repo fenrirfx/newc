@@ -44,7 +44,7 @@ class code{
 
 };
 
-class nif:code{
+class nif:public code{
     public:
     
     nif(string code, string description){
@@ -68,7 +68,7 @@ class nif:code{
 
 };
 
-class cc:code{
+class cc:public code{
     char array[26] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
     int temp[12] = {};
     int result = 0;
@@ -119,6 +119,7 @@ int main(){
     nif novonif = nif ("325478590","asdfgh");
     //cout<<novonif.checkNif("123456789");
     cout<<novonif.checkNif("238933128")<<endl;
+    cout<<novonif.GetCode()<<endl;
     cout<<novocode.checkCC("122393496ZX0")<<endl;
 
     return 0;
