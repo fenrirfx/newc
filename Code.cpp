@@ -21,7 +21,7 @@ class code{
         Description = description;
     }
 
-    string GetCode(){
+    virtual string GetCode(){
         return Code;
     }
 
@@ -52,6 +52,7 @@ class nif:public code{
         Description = description;
     }
 
+
     bool checkNif(string code){
         int nif = stoi(code),result = 0,resto = 0;
         
@@ -81,13 +82,13 @@ class cc:public code{
     }
 
     bool checkCC(string code){
-        for (int i=0; i<sizeof(code);i++){
+        for (int i=0; i<code.length();i++){
             if (isdigit(code[i])){
                 tmp = code[i];
                 temp[i] = stoi(tmp);
             }
             else{
-                for(int j=0;j<sizeof(array);j++){
+                for(int j=0;j<26;j++){
                     if (code[i] == array[j]){
                         temp[i] = j+10;
                     }
@@ -100,15 +101,13 @@ class cc:public code{
                 if (temp[i]>10)
                     temp[i] = temp[i]-9;
             }
-            result +=temp[i];
+            result+=temp[i];
         }
         if (result%10 == 0)
             return true;
         else
             return false;
-            
-
-       
+                   
     }
 
 };
@@ -118,9 +117,9 @@ int main(){
     cc novocode = cc ("123456789","qwerty");
     nif novonif = nif ("325478590","asdfgh");
     //cout<<novonif.checkNif("123456789");
-    cout<<novonif.checkNif("238933128")<<endl;
-    cout<<novonif.GetCode()<<endl;
-    //cout<<novocode.checkCC("122393496ZX0")<<endl;
+    //cout<<novonif.checkNif("236133128")<<endl;
+    //cout<<novonif.GetCode();
+    cout<<novocode.checkCC("127793496ZX0")<<endl;
 
     return 0;
 }
