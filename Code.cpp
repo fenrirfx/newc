@@ -70,10 +70,10 @@ class nif:public code{
 };
 
 class cc:public code{
-    char array[26] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
     int temp[12] = {};
-    int result = 0;
+    int result = 0,cont = 0,j;
     string tmp;
+    char tm;
     public:
     
     cc(string code, string description){
@@ -85,31 +85,54 @@ class cc:public code{
         for (int i=0; i<code.length();i++){
             if (isdigit(code[i])){
                 tmp = code[i];
-                temp[i] = stoi(tmp);
+                temp[i] = stoi(tmp);         
+            }
+            else {
+                tm=code[i];
+                temp[i]=tm-55;
+            }
+            cout<<" "<<temp[i];
+            cont++;
+            
+        }
+        cout<<" size"<<cont;
+        for (int i=0;i<cont;i++){
+            if (cont%2 == 0){
+                if (i%2 == 0){
+                    temp[i] = temp[i] * 2;
+                    if (temp[i]>=10)
+                        temp[i] = temp[i]-9;
+                    result+=temp[i];
+                }
+                else{
+                    result+=temp[i];
+                }
+                cout<<" "<<temp[i];
             }
             else{
-                for(int j=0;j<26;j++){
-                    if (code[i] == array[j]){
-                        temp[i] = j+10;
-                    }
+                if (i%2 >0){
+                   temp[i] = temp[i] * 2;
+                    if (temp[i]>=10)
+                        temp[i] = temp[i]-9;
+                    result+=temp[i]; 
                 }
+                else{
+                    result+=temp[i];
+                }
+                
             }
-        }
-        for (int i=0;i<12;i++){
-            if ((i+1)%2 != 0){
-                temp[i] = temp[i] * 2;
-                if (temp[i]>10)
-                    temp[i] = temp[i]-9;
+
+            
+            //cout<<" "<<temp[i]; 
             }
-            result+=temp[i];
-        }
-        if (result%10 == 0)
+
+     if (result%10 == 0)
             return true;
         else
             return false;
-                   
+         
     }
-
+    
 };
 
 int main(){
@@ -118,8 +141,8 @@ int main(){
     nif novonif = nif ("325478590","asdfgh");
     //cout<<novonif.checkNif("123456789");
     //cout<<novonif.checkNif("236133128")<<endl;
-    //cout<<novonif.GetCode();
+    //cout<<novonif.GetCode();  81918011ZZ2 127608435ZW5
     cout<<novocode.checkCC("127793496ZX0")<<endl;
-
+                            
     return 0;
 }
