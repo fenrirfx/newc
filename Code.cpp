@@ -139,10 +139,10 @@ int main(){
 
     cc novocode = cc ("123456789","qwerty");
     nif novonif = nif ("325478590","asdfgh");
-    //cout<<novonif.checkNif("123456789");
-    //cout<<novonif.checkNif("236133128")<<endl;
-    //cout<<novonif.GetCode();  81918011ZZ2 127608435ZW5
-    cout<<novocode.checkCC("127793496ZX0")<<endl;
+    //cout<<novonif.checkNif("123789");
+    //cout<<novonif.checkNif("236128")<<endl;
+    //cout<<novonif.GetCode(); 
+    cout<<novocode.checkCC("127796ZX0")<<endl;
                             
     return 0;
 }
